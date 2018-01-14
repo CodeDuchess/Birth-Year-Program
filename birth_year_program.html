@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Birth Year Program</title>
+</head>
+<body>
+
+	<center>
+		<!-- create input area, button and checkbox -->
+		<form style="margin-top:100px">
+			<input style="height:30px; width:400px; padding-left: 10px;" placeholder="Type your age..." type="number" name="number" id="number" />
+			<input type="button" value="Find Year" id="button" style="height:35px"; />
+			<center><p id="year">Year</p></center>
+			<label><input type="checkbox">Check here if you have already had your birthday this year.</label> <style= "height:25px; width:25px;"  value="birthday yet" name="birthday" id="birthday"/>
+			
+		</form>
+	</center>
+
+
+	<script type="text/javascript">
+		
+		// function to determine birth year via current age
+		function calculate() {
+			var number = document.getElementById("number").value;
+
+			var birthday = document.getElementById("birthday").checked;
+		// new varible and if statement to handle situations where the user has not yet had their birthday and therefore need to subtract 1 year from the output
+			var adjustment = 1;
+			if (birthday == true) {
+				adjustment = 0;
+			}
+		// if statement for error handling; if zero or no number is entered, have a message pop up
+			if (number == "" || number == 0) {
+				window.alert("Please type your correct age!");
+				return;
+
+			}
+			
+
+			var date = new Date().getFullYear();
+			var birthyear = date - number - adjustment;
+
+			
+			document.getElementById("year").style.display = "block";
+			document.getElementById("year").innerHTML = "Your Birth Year is  " + birthyear;
+		}
+
+		document.getElementById("year").style.display = "none";
+
+		document.getElementById("button").onclick = function() {
+			calculate();
+		}
+
+
+
+		</script>
+
+	</body>
+</html>
